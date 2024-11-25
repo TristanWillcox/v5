@@ -10,7 +10,7 @@ type SubTab = 'visual' | 'audio' | 'story';
 
 export function Project() {
   const { id } = useParams();
-  const { activeColor } = useProject();
+  const { activeColor, activeFont } = useProject();
   const [activeTab, setActiveTab] = useState<Tab>('overview');
   const [activeSubTab, setActiveSubTab] = useState<SubTab | null>(null);
   const project = featuredProjects.find(p => p.id === Number(id));
@@ -36,7 +36,7 @@ export function Project() {
   };
 
   return (
-    <div className="space-y-8">
+    <div className={`space-y-8 ${activeFont}`}>
       <div className="relative h-64 rounded-xl overflow-hidden">
         <img
           src={project.image}
